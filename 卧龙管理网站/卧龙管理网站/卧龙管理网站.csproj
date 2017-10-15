@@ -200,6 +200,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Enum\EnCodeEnum.cs" />
     <Compile Include="Models\FileModel.cs" />
