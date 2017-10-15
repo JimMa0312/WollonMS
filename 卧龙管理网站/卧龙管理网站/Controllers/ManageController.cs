@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using 卧龙管理网站.Models;
+using WollonMe.Models.ViewModels;
 
 namespace 卧龙管理网站.Controllers
 {

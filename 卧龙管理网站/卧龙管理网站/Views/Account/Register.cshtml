@@ -1,4 +1,5 @@
-﻿@model 卧龙管理网站.Models.RegisterViewModel
+﻿@model WollonMe.Models.ViewModels.RegisterViewModel
+@using 卧龙管理网站.Models.Enum
 @{
     ViewBag.Title = "注册";
 }
@@ -8,7 +9,7 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>创建新帐户。</h4>
+    <h4>创建新用户。</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -18,7 +19,26 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m=>m.Nick,new { @class="col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Nick, new { @class="form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Gender,new {@class="col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.RadioButtonFor(m => m.Gender, Egender.女, new { @class = "radio radio-inline",@checked="checked"})女
+            @Html.RadioButtonFor(m=>m.Gender,Egender.男,new { @class ="radio radio-inline"})男
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class="col-md-2 control-label"})
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>

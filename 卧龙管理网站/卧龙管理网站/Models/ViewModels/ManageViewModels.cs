@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace 卧龙管理网站.Models
+namespace WollonMe.Models.ViewModels
 {
     public class IndexViewModel
     {

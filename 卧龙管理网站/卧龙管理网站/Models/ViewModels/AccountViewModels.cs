@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace 卧龙管理网站.Models
+namespace WollonMe.Models.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -68,6 +68,15 @@ namespace 卧龙管理网站.Models
         [EmailAddress]
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name ="昵称")]
+        public string Nick { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name ="手机号")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         [Display(Name ="性别")]

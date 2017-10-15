@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WollonMe.Models;
 
 namespace 卧龙管理网站.Models
 {
@@ -20,6 +21,8 @@ namespace 卧龙管理网站.Models
         //性别
         public 卧龙管理网站.Models.Enum.Egender UserGender { get; set; }
 
+        public FileModel FileImage { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
 
@@ -32,6 +35,7 @@ namespace 卧龙管理网站.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<FileModel> FileModels { get; set; }
         public ApplicationDbContext()
             : base("WollonMeDb", throwIfV1Schema: false)
         {
