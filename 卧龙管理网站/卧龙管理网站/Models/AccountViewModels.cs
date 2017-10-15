@@ -70,6 +70,10 @@ namespace 卧龙管理网站.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name ="性别")]
+        public 卧龙管理网站.Models.Enum.Egender Gender { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "密码")]

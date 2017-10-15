@@ -9,7 +9,7 @@
     <ProjectGuid>{8E09133F-EEE1-49D3-91E7-3015294EFF26}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>卧龙管理网站.Tests</RootNamespace>
+    <RootNamespace>WollonMe.Tests</RootNamespace>
     <AssemblyName>卧龙管理网站.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

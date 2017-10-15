@@ -53,6 +53,15 @@ namespace 卧龙管理网站.Controllers
         }
 
         //
+        // GET: /Account/(Index)
+        //遍历输出用户信息
+        [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View(UserManager.Users);
+        }
+
+        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
