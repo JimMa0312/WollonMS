@@ -161,7 +161,7 @@ namespace 卧龙管理网站.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,PhoneNumber=model.PhoneNumber, UserGender=model.Gender};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,PhoneNumber=model.PhoneNumber, UserGender=model.Gender,FileID=1,GroupID=1,PositionID=1};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

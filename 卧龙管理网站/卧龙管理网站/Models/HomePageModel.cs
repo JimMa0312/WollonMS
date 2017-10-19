@@ -4,14 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using 卧龙管理网站.Models;
 
 namespace WollonMe.Models
 {
-    [Table("Position")]
-    public class PositionModel
+    [Table("HomePage")]
+    public class HomePageModel
     {
         [Key]
-        public int PositionID { get; set; }
-        public string PositionName { get; set; }
+        public string HomePageID { set; get; }
+        public string HomePageTitle { set; get; }
+        public string HomePageDes { set; get; }
     }
 }

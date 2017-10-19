@@ -1,9 +1,14 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using WollonMe.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Collections.Generic;
+using System;
 
 namespace 卧龙管理网站.Models
 {
@@ -21,7 +26,20 @@ namespace 卧龙管理网站.Models
         //性别
         public 卧龙管理网站.Models.Enum.Egender UserGender { get; set; }
 
-        public FileModel FileImage { get; set; }
+        [ForeignKey("FileImage")]
+        public int FileID { set; get; }
+        public virtual FileModel FileImage { get; set; }
+
+        [ForeignKey("Group")]
+        public int GroupID { set; get; }
+
+        public virtual GroupModel Group { set; get; }
+
+        [ForeignKey("Position")]
+        public int PositionID { set; get; }
+
+        public virtual PositionModel Position { set; get; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -35,10 +53,16 @@ namespace 卧龙管理网站.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public DbSet<FileModel> FileModels { get; set; }
+        public DbSet<HomePageModel> HomePageModels { set; get; }
+        public DbSet<GroupModel> GroupModels { set; get; }
+        public DbSet<PositionModel> PositionModels { set; get; }
+
         public ApplicationDbContext()
             : base("WollonMeDb", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()
@@ -60,6 +84,21 @@ namespace 卧龙管理网站.Models
         public void PerformInitialSetup(ApplicationDbContext context)
         {
             //初始化默认数据
+
+            FileModel defaultImg = new FileModel();
+            defaultImg.FileName = "defaultImg";
+            defaultImg.FileKind = "img";
+            defaultImg.UpTime = DateTime.Now;
+            defaultImg.FileUrl = "default";
+            context.FileModels.Add(defaultImg);
+
+            GroupModel defaultGroup = new GroupModel();
+            defaultGroup.GroupName = "未分组";
+            context.GroupModels.Add(defaultGroup);
+
+            PositionModel defaultPostion = new PositionModel();
+            defaultPostion.PositionName = "未入职";
+            context.PositionModels.Add(defaultPostion);
         }
     }
 }
