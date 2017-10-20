@@ -201,6 +201,7 @@
     </Compile>
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\HomePageModel.cs" />
+    <Compile Include="Models\LevelModel.cs" />
     <Compile Include="Models\MainKindModel.cs" />
     <Compile Include="Models\PerKindModel.cs" />
     <Compile Include="Models\PositionModel.cs" />

@@ -55,9 +55,15 @@ namespace 卧龙管理网站.Models
     {
 
         public DbSet<FileModel> FileModels { get; set; }
-        public DbSet<HomePageModel> HomePageModels { set; get; }
         public DbSet<GroupModel> GroupModels { set; get; }
         public DbSet<PositionModel> PositionModels { set; get; }
+        public DbSet<HomePageModel> HomePageModels { set; get; }
+        public DbSet<BlogModel> BlogModels { set; get; }
+        public DbSet<MainKindModel> MainKindModels { set; get; }
+        public DbSet<PerKindModel> PerKindModels { set; get; }
+        public DbSet<TagModel> TagModels { set; get; }
+        public DbSet<LevelModel> LevelModels { set; get; }
+        public DbSet<RemarkModel> RemarkModels { set; get; }
 
         public ApplicationDbContext()
             : base("WollonMeDb", throwIfV1Schema: false)
@@ -99,6 +105,14 @@ namespace 卧龙管理网站.Models
             PositionModel defaultPostion = new PositionModel();
             defaultPostion.PositionName = "未入职";
             context.PositionModels.Add(defaultPostion);
+
+            LevelModel defaultLevel = new LevelModel();
+            defaultLevel.LevelName = "普通";
+            context.LevelModels.Add(defaultLevel);
+
+            MainKindModel defaultMainKind = new MainKindModel();
+            defaultMainKind.MainKindName = "未分类";
+            context.MainKindModels.Add(defaultMainKind);
         }
     }
 }
