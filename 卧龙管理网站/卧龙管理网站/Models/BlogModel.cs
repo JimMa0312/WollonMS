@@ -8,7 +8,7 @@ using System.Web;
 namespace WollonMe.Models
 {
     [Table("Blog")]
-    public class BlogModel
+    public class Blog
     {
         [Key]
         public int BlogID { set; get; }

@@ -7,11 +7,9 @@ using System.Web;
 
 namespace WollonMe.Models
 {
-    [Table("Remark")]
-    public class RemarkModel
+    public class Remark
     {
-        [Key]
-        public int RemarkID { set; get; }
+        public int RemarkId { set; get; }
         public string RemarkCont { set; get; }
         public string UserID { set; get; }
         public DateTime RemarkTime { set; get; }

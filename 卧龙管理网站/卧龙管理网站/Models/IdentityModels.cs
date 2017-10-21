@@ -26,19 +26,17 @@ namespace 卧龙管理网站.Models
         //性别
         public 卧龙管理网站.Models.Enum.Egender UserGender { get; set; }
 
-        [ForeignKey("FileImage")]
-        public int FileID { set; get; }
-        public virtual FileModel FileImage { get; set; }
+        public int FileId { set; get; }
+        [ForeignKey("FileId")]
+        public virtual File FileImage { get; set; }
 
-        [ForeignKey("Group")]
-        public int GroupID { set; get; }
+        public int F_GroupId { set; get; }
+        [ForeignKey("GroupId")]
+        public virtual Group Group { set; get; }
 
-        public virtual GroupModel Group { set; get; }
-
-        [ForeignKey("Position")]
-        public int PositionID { set; get; }
-
-        public virtual PositionModel Position { set; get; }
+        public int PositionId { set; get; }
+        [ForeignKey("PositionId")]
+        public virtual Position Position { set; get; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -54,10 +52,10 @@ namespace 卧龙管理网站.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        public DbSet<FileModel> FileModels { get; set; }
-        public DbSet<GroupModel> GroupModels { set; get; }
-        public DbSet<PositionModel> PositionModels { set; get; }
-        public DbSet<HomePageModel> HomePageModels { set; get; }
+        public DbSet<File> FileModels { get; set; }
+        public DbSet<Group> GroupModels { set; get; }
+        public DbSet<Position> PositionModels { set; get; }
+        public DbSet<HomePage> HomePageModels { set; get; }
         public DbSet<BlogModel> BlogModels { set; get; }
         public DbSet<MainKindModel> MainKindModels { set; get; }
         public DbSet<PerKindModel> PerKindModels { set; get; }
@@ -68,7 +66,6 @@ namespace 卧龙管理网站.Models
         public ApplicationDbContext()
             : base("WollonMeDb", throwIfV1Schema: false)
         {
-
         }
 
         public static ApplicationDbContext Create()

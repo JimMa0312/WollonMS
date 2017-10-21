@@ -7,8 +7,7 @@ using System.Web;
 
 namespace WollonMe.Models
 {
-    [Table("File")]
-    public class FileModel
+    public class File
     {
         [Key]
         public int FileID { get; set; }

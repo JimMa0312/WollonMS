@@ -7,11 +7,9 @@ using System.Web;
 
 namespace WollonMe.Models
 {
-    [Table("Level")]
-    public class LevelModel
+    public class Level
     {
-        [Key]
-        public int LevelID { set; get; }
+        public int LevelId { set; get; }
         public string LevelName { set; get; }
     }
 }
