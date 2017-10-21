@@ -56,12 +56,12 @@ namespace 卧龙管理网站.Models
         public DbSet<Group> GroupModels { set; get; }
         public DbSet<Position> PositionModels { set; get; }
         public DbSet<HomePage> HomePageModels { set; get; }
-        public DbSet<BlogModel> BlogModels { set; get; }
-        public DbSet<MainKindModel> MainKindModels { set; get; }
-        public DbSet<PerKindModel> PerKindModels { set; get; }
-        public DbSet<TagModel> TagModels { set; get; }
-        public DbSet<LevelModel> LevelModels { set; get; }
-        public DbSet<RemarkModel> RemarkModels { set; get; }
+        public DbSet<Blog> BlogModels { set; get; }
+        public DbSet<MainKind> MainKindModels { set; get; }
+        public DbSet<PerKind> PerKindModels { set; get; }
+        public DbSet<Tag> TagModels { set; get; }
+        public DbSet<Level> LevelModels { set; get; }
+        public DbSet<Remark> RemarkModels { set; get; }
 
         public ApplicationDbContext()
             : base("WollonMeDb", throwIfV1Schema: false)
@@ -87,29 +87,6 @@ namespace 卧龙管理网站.Models
         public void PerformInitialSetup(ApplicationDbContext context)
         {
             //初始化默认数据
-
-            FileModel defaultImg = new FileModel();
-            defaultImg.FileName = "defaultImg";
-            defaultImg.FileKind = "img";
-            defaultImg.UpTime = DateTime.Now;
-            defaultImg.FileUrl = "default";
-            context.FileModels.Add(defaultImg);
-
-            GroupModel defaultGroup = new GroupModel();
-            defaultGroup.GroupName = "未分组";
-            context.GroupModels.Add(defaultGroup);
-
-            PositionModel defaultPostion = new PositionModel();
-            defaultPostion.PositionName = "未入职";
-            context.PositionModels.Add(defaultPostion);
-
-            LevelModel defaultLevel = new LevelModel();
-            defaultLevel.LevelName = "普通";
-            context.LevelModels.Add(defaultLevel);
-
-            MainKindModel defaultMainKind = new MainKindModel();
-            defaultMainKind.MainKindName = "未分类";
-            context.MainKindModels.Add(defaultMainKind);
         }
     }
 }

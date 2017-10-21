@@ -7,11 +7,9 @@ using System.Web;
 
 namespace WollonMe.Models
 {
-    [Table("Blog")]
     public class Blog
     {
-        [Key]
-        public int BlogID { set; get; }
+        public int BlogId { set; get; }
         /// <summary>
         /// 作者
         /// </summary>

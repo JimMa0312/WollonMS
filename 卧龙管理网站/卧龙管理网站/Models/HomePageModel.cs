@@ -7,7 +7,7 @@ namespace WollonMe.Models
 {
     public class HomePage
     {
-        public string HomePageId { set; get; }
+        public int HomePageId { set; get; }
         public string HomePageTitle { set; get; }
         public string HomePageDes { set; get; }
     }
