@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using 卧龙管理网站.Models;
 
 namespace WollonMe.Models
 {
@@ -11,14 +12,16 @@ namespace WollonMe.Models
     {
         public int RemarkId { set; get; }
         public string RemarkCont { set; get; }
-        public string UserID { set; get; }
         public DateTime RemarkTime { set; get; }
         public int Floor { set; get; }
         public int ToFloor { set; get; }
-        public Boolean isView { set; get; }
+        public Boolean IsView { set; get; }
 
-        
-        public int BlogID { set; get; }
-        public virtual BlogModel Blog { set; get; }
+        public string UserId { set; get; }
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }
+        public int BlogId { set; get; }
+        [ForeignKey("BlogId")]
+        public virtual Blog Blog { set; get; }
     }
 }

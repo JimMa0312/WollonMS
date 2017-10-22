@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using 卧龙管理网站.Models;
 
 namespace WollonMe.Models
 {
@@ -14,5 +15,7 @@ namespace WollonMe.Models
         public string FileKind { get; set; }
         public string FileUrl { get; set; }
         public DateTime UpTime { get; set; }
+
+        public ApplicationUser UpUser { get; set; }
     }
 }

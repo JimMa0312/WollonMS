@@ -26,17 +26,14 @@ namespace 卧龙管理网站.Models
         //性别
         public 卧龙管理网站.Models.Enum.Egender UserGender { get; set; }
 
-        public int FileId { set; get; }
-        [ForeignKey("FileId")]
+        public int ImageId { set; get; }
+        [ForeignKey("ImageId")]
         public virtual File FileImage { get; set; }
 
         public int F_GroupId { set; get; }
         [ForeignKey("GroupId")]
         public virtual Group Group { set; get; }
 
-        public int PositionId { set; get; }
-        [ForeignKey("PositionId")]
-        public virtual Position Position { set; get; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -54,7 +51,6 @@ namespace 卧龙管理网站.Models
 
         public DbSet<File> FileModels { get; set; }
         public DbSet<Group> GroupModels { set; get; }
-        public DbSet<Position> PositionModels { set; get; }
         public DbSet<HomePage> HomePageModels { set; get; }
         public DbSet<Blog> BlogModels { set; get; }
         public DbSet<MainKind> MainKindModels { set; get; }

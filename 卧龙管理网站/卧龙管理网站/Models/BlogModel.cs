@@ -4,16 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using 卧龙管理网站.Models;
 
 namespace WollonMe.Models
 {
     public class Blog
     {
         public int BlogId { set; get; }
-        /// <summary>
-        /// 作者
-        /// </summary>
-        public string AuthorID { set; get; }
         /// <summary>
         /// 标题 
         /// </summary>
@@ -45,7 +42,7 @@ namespace WollonMe.Models
         /// <summary>
         /// 是否可见
         /// </summary>
-        public Boolean isView { set; get; }
+        public Boolean IsView { set; get; }
         /// <summary>
         /// 点击量
         /// </summary>
@@ -55,23 +52,31 @@ namespace WollonMe.Models
         /// </summary>
         public int RemarkNum { set; get; }
         /// <summary>
+        /// 作者
+        /// </summary>
+        public string AuthorId { set; get; }
+
+        [ForeignKey("AuthorId")]
+        public virtual ApplicationUser Author { get; set; }
+        /// <summary>
         /// 主分类
         /// </summary>
-        [ForeignKey("MainKind")]
-        public int MainKindID { set; get; }
-        public virtual MainKindModel MainKind { set; get; }
+        public int MainKindId { set; get; }
+        [ForeignKey("MainKindId")]
+        public virtual MainKind MainKind { set; get; }
         /// <summary>
         /// 图片
         /// </summary>
-        [ForeignKey("BlogImg")]
-        public int FileID { set; get; }
-        public virtual FileModel BlogImg { set; get; }
+        public int FileId { set; get; }
+
+        [ForeignKey("FileId")]
+        public virtual File BlogImg { set; get; }
         /// <summary>
         /// 博文级别
         /// </summary>
-        [ForeignKey("Level")]
-        public int LevelID { set; get; }
-        public virtual LevelModel Level { set; get; }
+        public int LevelId { set; get; }
+        [ForeignKey("LevelId")]
+        public virtual Level Level { set; get; }
 
     }
 }

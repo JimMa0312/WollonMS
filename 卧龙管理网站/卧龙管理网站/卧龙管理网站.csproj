@@ -204,7 +204,6 @@
     <Compile Include="Models\LevelModel.cs" />
     <Compile Include="Models\MainKindModel.cs" />
     <Compile Include="Models\PerKindModel.cs" />
-    <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\RemarkModel.cs" />
     <Compile Include="Models\TagModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
