@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using 卧龙管理网站.Models;
 
 namespace WollonMe.Models.ViewModels
 {
@@ -127,5 +128,20 @@ namespace WollonMe.Models.ViewModels
         [EmailAddress]
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
+    }
+
+    public class RoleEditModel
+    {
+        public AppRole Role { get; set; }
+        public IEnumerable<ApplicationUser> Members { get; set; }
+        public IEnumerable<ApplicationUser> NonMembers { get; set; }
+    }
+
+    public class RoleModificationModel
+    {
+        [Required]
+        public string RoleName { get; set; }
+        public string[] IdsToAdd { get; set; }
+        public string[] IdsToDelete { get; set; }
     }
 }

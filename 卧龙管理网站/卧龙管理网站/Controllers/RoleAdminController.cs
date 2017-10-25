@@ -24,7 +24,7 @@ namespace WollonMe.Controllers
         {
             return View();
         }
-
+        private AppRoleManager _roleManager;
         [HttpPost]
         public async Task<ActionResult> Create([Required]string name)
         {
@@ -65,6 +65,8 @@ namespace WollonMe.Controllers
             }
         }
 
+       
+
         public void AddErrorsFromResult(IdentityResult result)
         {
             foreach(string error in result.Errors)
@@ -73,11 +75,15 @@ namespace WollonMe.Controllers
             }
         }
 
-        private AppRoleManager RoleManager
+        public AppRoleManager RoleManager
         {
             get
             {
-                return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
+                return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
     }
