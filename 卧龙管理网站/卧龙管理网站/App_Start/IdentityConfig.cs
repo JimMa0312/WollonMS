@@ -119,21 +119,4 @@ namespace 卧龙管理网站
             return role;
         }
     }
-
-    public class IdentityConfig
-    {
-        public void Configuration(IAppBuilder app)
-        {
-            app.CreatePerOwinContext<ApplicationDbContext>(ApplicationDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
-            });
-        }
-    }
-
 }

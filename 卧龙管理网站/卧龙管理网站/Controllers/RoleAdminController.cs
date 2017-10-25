@@ -75,15 +75,11 @@ namespace WollonMe.Controllers
             }
         }
 
-        public AppRoleManager RoleManager
+        private AppRoleManager RoleManager
         {
             get
             {
-                return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
-            }
-            private set
-            {
-                _roleManager = value;
+                return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
             }
         }
     }
