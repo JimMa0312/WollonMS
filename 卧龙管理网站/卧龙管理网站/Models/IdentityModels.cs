@@ -4,11 +4,15 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin;
 using WollonMe.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Collections.Generic;
 using System;
+using System.Web;
+using System.Web.Mvc;
 
 namespace 卧龙管理网站.Models
 {
@@ -83,6 +87,25 @@ namespace 卧龙管理网站.Models
         public void PerformInitialSetup(ApplicationDbContext context)
         {
             //初始化默认数据
+        }
+    }
+
+    public class AppRole : IdentityRole
+    {
+        public AppRole() : base() { }
+
+        public AppRole(string name) : base(name) { }
+    }
+
+    
+    //HTML辅助器方法，用于根据用户ID获取用户名
+    public static class IdentityHelpers
+    {
+        public static MvcHtmlString GetUserName(this HtmlHelper html, string id)
+        {
+            ApplicationUserManager mgr
+                = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            return new MvcHtmlString(mgr.FindByIdAsync(id).Result.UserName);
         }
     }
 }

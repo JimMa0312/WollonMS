@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using 卧龙管理网站.Models;
+using Microsoft.Owin.Security.Cookies;
+using Owin;
 
 namespace 卧龙管理网站
 {
@@ -106,4 +108,32 @@ namespace 卧龙管理网站
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
+    public class AppRoleManager : RoleManager<AppRole>, IDisposable
+    {
+        public AppRoleManager(RoleStore<AppRole> store) : base(store) { }
+        public static AppRoleManager Create(
+            IdentityFactoryOptions<AppRoleManager> options,
+            IOwinContext context)
+        {
+            var role = new AppRoleManager(new RoleStore<AppRole>(context.Get<ApplicationDbContext>()));
+            return role;
+        }
+    }
+
+    public class IdentityConfig
+    {
+        public void Configuration(IAppBuilder app)
+        {
+            app.CreatePerOwinContext<ApplicationDbContext>(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login"),
+            });
+        }
+    }
+
 }
