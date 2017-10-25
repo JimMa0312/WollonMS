@@ -30,12 +30,8 @@ namespace 卧龙管理网站.Models
         //性别
         public 卧龙管理网站.Models.Enum.Egender UserGender { get; set; }
 
-        public int ImageId { set; get; }
-        [ForeignKey("ImageId")]
         public virtual File FileImage { get; set; }
 
-        public int F_GroupId { set; get; }
-        [ForeignKey("GroupId")]
         public virtual Group Group { set; get; }
 
 

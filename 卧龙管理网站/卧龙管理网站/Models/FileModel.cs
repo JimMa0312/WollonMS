@@ -16,6 +16,5 @@ namespace WollonMe.Models
         public string FileUrl { get; set; }
         public DateTime UpTime { get; set; }
 
-        public ApplicationUser UpUser { get; set; }
     }
 }
