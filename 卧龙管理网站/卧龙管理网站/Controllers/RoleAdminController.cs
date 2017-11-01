@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using 卧龙管理网站.Models;
+using WollonMe.Models.ViewModels;
 using 卧龙管理网站;
+using System.Collections.Generic;
+using 卧龙管理网站.Controllers;
 
 namespace WollonMe.Controllers
 {
@@ -65,13 +68,61 @@ namespace WollonMe.Controllers
             }
         }
 
-       
+        public async Task<ActionResult> Edit(string id)
+        {
+            AppRole role = await RoleManager.FindByIdAsync(id);
+            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            IEnumerable<ApplicationUser> members
+                = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
+            IEnumerable<ApplicationUser> nonMembers = UserManager.Users.Except(members);
+            return View(new RoleEditModel
+            {
+                Role = role,
+                Members = members,
+                NonMembers = nonMembers
+            });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(RoleModificationModel model)
+        {
+            IdentityResult result;
+            if (ModelState.IsValid)
+            {
+                foreach(string userId in model.IdsToAdd ?? new string[] { })
+                {
+                    result = await UserManager.AddToRoleAsync(userId, model.RoleName);
+                    if (!result.Succeeded)
+                    {
+                        return View("Error", result.Errors);
+                    }
+                }
+                foreach(string userId in model.IdsToDelete ?? new string[] { })
+                {
+                    result = await UserManager.RemoveFromRoleAsync(userId, model.RoleName);
+                    if (!result.Succeeded)
+                    {
+                        return View("Error", result.Errors);
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            return View("Error", new string[] { "Role Not Found" });
+        }
 
         public void AddErrorsFromResult(IdentityResult result)
         {
             foreach(string error in result.Errors)
             {
                 ModelState.AddModelError("", error);
+            }
+        }
+
+        private ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
         }
 
