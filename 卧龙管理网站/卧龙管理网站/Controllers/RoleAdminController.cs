@@ -10,7 +10,6 @@ using Microsoft.AspNet.Identity.Owin;
 using 卧龙管理网站.Models;
 using WollonMe.Models.ViewModels;
 using 卧龙管理网站;
-using System.Collections.Generic;
 using 卧龙管理网站.Controllers;
 
 namespace WollonMe.Controllers
@@ -23,11 +22,17 @@ namespace WollonMe.Controllers
             return View(RoleManager.Roles);
         }
 
+        //GET:RoleAdmin/Create
+        //访问角色创建页面
         public ActionResult Create()
         {
             return View();
         }
         private AppRoleManager _roleManager;
+
+        //POST:RoleAdmin/Create
+        //角色创建业务请求
+        //Mdoel:{stirng: name}
         [HttpPost]
         public async Task<ActionResult> Create([Required]string name)
         {
@@ -46,6 +51,9 @@ namespace WollonMe.Controllers
             return View(name);
         }
 
+        //POST:RoleAdmin/Delete
+        //角色删除业务请求
+        //Model:{string: id}
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
@@ -67,11 +75,13 @@ namespace WollonMe.Controllers
                 return View("Error", new string[] { "Role Not Found" });
             }
         }
-
+        //GET:RoleAdmin/Edit?id=?
+        //角色授权页面请求
+        //必须有角色ID传入
         public async Task<ActionResult> Edit(string id)
         {
             AppRole role = await RoleManager.FindByIdAsync(id);
-            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            string[] memberIDs = role.Users.Select(x=>x.UserId).ToArray() ;
             IEnumerable<ApplicationUser> members
                 = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
             IEnumerable<ApplicationUser> nonMembers = UserManager.Users.Except(members);
@@ -83,6 +93,9 @@ namespace WollonMe.Controllers
             });
         }
 
+        //POST:RoleAdmin/Edit
+        //角色授权业务请求
+        //model->RoleModificationMedel
         [HttpPost]
         public async Task<ActionResult> Edit(RoleModificationModel model)
         {
@@ -133,5 +146,7 @@ namespace WollonMe.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
             }
         }
+
+        public AppRoleManager RoleManager1 { get => _roleManager; set => _roleManager = value; }
     }
 }
