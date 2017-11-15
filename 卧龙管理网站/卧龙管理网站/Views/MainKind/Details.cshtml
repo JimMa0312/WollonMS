@@ -1,0 +1,26 @@
+﻿@model WollonMe.Models.MainKind
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MainKindModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MainKindName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainKindName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MainKindId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

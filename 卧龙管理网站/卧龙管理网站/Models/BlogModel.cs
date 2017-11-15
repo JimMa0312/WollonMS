@@ -78,5 +78,6 @@ namespace WollonMe.Models
         [ForeignKey("LevelId")]
         public virtual Level Level { set; get; }
 
+        public virtual ICollection<Remark> Remarks { set; get; }
     }
 }

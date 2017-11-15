@@ -1,0 +1,130 @@
+﻿@model WollonMe.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BlogModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogImg.FileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogImg.FileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Level.LevelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Level.LevelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainKind.MainKindName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainKind.MainKindName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogAbst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogAbst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogCont)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogCont)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PerKinds)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PerKinds)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsView)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsView)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClickNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClickNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RemarkNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemarkNum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BlogId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿@model WollonMe.Models.PerKind
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PerKindModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PerKindName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PerKindName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PerKindId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

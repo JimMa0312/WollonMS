@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WollonMe.Models.Blog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogImg.FileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level.LevelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainKind.MainKindName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogAbst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogCont)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tags)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PerKinds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsView)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClickNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RemarkNum)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogImg.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level.LevelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainKind.MainKindName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogAbst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogCont)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BlogSource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tags)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerKinds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsView)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClickNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RemarkNum)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BlogId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BlogId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BlogId })
+        </td>
+    </tr>
+}
+
+</table>
